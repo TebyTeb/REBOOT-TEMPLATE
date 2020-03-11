@@ -26,7 +26,7 @@ const app = express()
   .use(morgan('combined'))
   .use(express.json())
   .use(express.static(path.join(__dirname, 'public')))
-  .use('/api', require('./app/routes'))
+  .use('/api', require('./api/routes'))
 
 // Init server
 const PORT = process.env.PORT || 2222
