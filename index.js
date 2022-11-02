@@ -1,13 +1,13 @@
 process.stdout.write('\x1B[2J\x1B[0f') // Clear terminal screen
 require('dotenv').config()
 
-const express = require('express')
+const express = require('express')  // Brings Express Router framework
 
-const cors = require('cors')
-const mongoose = require('mongoose')
-const morgan = require('morgan')
+const cors = require('cors')  // Manages cross-origin requests
+const mongoose = require('mongoose') // Allows petitions to database
+const morgan = require('morgan') // Logger 
 
-;(async function () {
+(async function () {
   // MONGOOSE
   try {
     await mongoose.connect(process.env.MONGO_URL, {
@@ -22,9 +22,9 @@ const morgan = require('morgan')
     // ADDING MIDDLEWARES & ROUTER
     const app = express()
       .use(cors())
-      .use(morgan('combined'))
-      .use(express.json())
-      .use('/api', require('./api/routes'))
+      .use(morgan('combined')) // Show log for every request in "combined" format.
+      .use(express.json()) // Parses .json format into js objects 
+      .use('/api', require('./api/routes')) // If we get a petition with "/api..." in it, it will call "./api/routes" and execute index.js
 
     // Init server
     const PORT = process.env.PORT || 2222

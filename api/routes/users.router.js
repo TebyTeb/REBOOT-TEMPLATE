@@ -9,7 +9,7 @@ const {
 
 router.get('/', getAllUsers)
 router.get('/:id', getUserById)
-router.delete('/:id', deleteUserById)
 router.put('/:id', updateUser)
+router.delete('/:id', deleteUserById)
 
 module.exports = router
